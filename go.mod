@@ -1,3 +1,3 @@
-module github.com/atomiksan/webapp-in-go.git
+module github.com/atomiksan/webapp-in-go
 
 go 1.23.1
