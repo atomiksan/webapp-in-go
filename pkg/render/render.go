@@ -8,6 +8,7 @@ import (
 	"path/filepath"
 
 	"github.com/atomiksan/webapp-in-go/pkg/config"
+	"github.com/atomiksan/webapp-in-go/pkg/models"
 )
 
 var app *config.AppConfig
@@ -17,8 +18,12 @@ func NewTemplates(a *config.AppConfig) {
 	app = a
 }
 
+func AddDefaultData(tmpl_data *models.TemplateData) *models.TemplateData {
+	return tmpl_data
+}
+
 // RenderTemplate renders templates using html templates
-func RenderTemplate(w http.ResponseWriter, tmpl string) {
+func RenderTemplate(w http.ResponseWriter, tmpl string, tmpl_data *models.TemplateData) {
 	var tc map[string]*template.Template
 
 	if app.UseCache {
@@ -34,7 +39,9 @@ func RenderTemplate(w http.ResponseWriter, tmpl string) {
 	}
 
 	buf := new(bytes.Buffer)
-	_ = t.Execute(buf, nil)
+
+	tmpl_data = AddDefaultData(tmpl_data)
+	_ = t.Execute(buf, tmpl_data)
 
 	// render the template
 	_, err := buf.WriteTo(w)
