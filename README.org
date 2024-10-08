@@ -1,2 +1,7 @@
-# webapp-in-go
-webapp written in go for demonstration
+* webapp-in-go
+** A demo webapp written in GO
++ uses go-chi/chi router to establish routes and middlewares
++ uses justinas/nosurf for CSRF protection
++ uses repository method to design code
++ uses an appwide config to manage config and state
++ uses go .tmpl files to show dynamic content in the webapp
