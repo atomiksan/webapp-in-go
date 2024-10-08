@@ -1,7 +1,15 @@
-* webapp-in-go
+* Webapp in GO
 ** A demo webapp written in GO
 + uses go-chi/chi router to establish routes and middlewares
 + uses justinas/nosurf for CSRF protection
 + uses repository method to design code
 + uses an appwide config to manage config and state
 + uses go .tmpl files to show dynamic content in the webapp
+** Build and run instructions
++ install the latest go binary from go.dev
++ clone the repository
++ cd into directory and run/build using the following command
+  #+begin_example
+go run cmd/web*
+  #+end_example
+go build cmd/web*
